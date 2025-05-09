@@ -80,8 +80,8 @@ Check out a live demo of the app here:
 AI Developer | Python Enthusiast | Generative AI Specialist  
 
 **Connect with me:**  
-- [GitHub](https://github.com/your-username)  
-- [LinkedIn](https://linkedin.com/in/your-link)
+- [GitHub](https://github.com/TM-EMTU/)  
+- [LinkedIn]([https://linkedin.com/in/your-link](https://www.linkedin.com/in/tanjil-mahmud-1551aa334/))
 
 ---
 
