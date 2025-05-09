@@ -99,7 +99,7 @@ if video_id:
             transcript = " ".join(transcripts)
             st.success("✅ Transcript successfully retrieved.")
         except Exception as e:
-            st.error("❌ No captions available for this video.")
+            st.error(f"❌ No captions available for this video. Error: {str(e)}")
             transcript = ""
 
 # --- Proceed if transcript available ---
@@ -131,6 +131,8 @@ if transcript:
         )
 
         def format_docs(retrieved_docs):
+            if not retrieved_docs:
+                return "No relevant context found."
             return "\n\n".join(doc.page_content for doc in retrieved_docs)
 
         parallel_chain = RunnableParallel({
@@ -144,6 +146,9 @@ if transcript:
     question = st.chat_input("💬 Ask a question about the video content:")
     if question:
         with st.spinner("🧠 Thinking..."):
-            answer = main_chain.invoke(question)
-            st.markdown("### 💡 Answer:")
-            st.markdown(f"<div class='info-box'>{answer}</div>", unsafe_allow_html=True)
+            try:
+                answer = main_chain.invoke(question)
+                st.markdown("### 💡 Answer:")
+                st.markdown(f"<div class='info-box'>{answer}</div>", unsafe_allow_html=True)
+            except Exception as e:
+                st.error(f"❌ An error occurred while processing your question. Error: {str(e)}")
